@@ -1,11 +1,14 @@
 export default defineNuxtConfig({
-  
-  modules:
-   ['@nuxt/ui',
+  compatibilityDate: '2026-03-10',
+
+  modules: [
+    '@nuxt/ui',
     'nuxt-auth-utils',
     '@nuxthub/core'
   ],
+
   css: ['~/assets/css/main.css'],
+
   ui: {
     global: true,
     primary: 'black',
@@ -14,14 +17,18 @@ export default defineNuxtConfig({
       rounded: 'rounded-2xl'
     }
   },
-  
+
   hub: {
     database: true,
-    blob: true, // For image uploads
-    kv: true    // For session/caching
+    blob: true,
+    kv: true
   },
+
   nitro: {
-    preset: 'cloudflare-pages' 
+    preset: 'cloudflare-pages'
+  },
+
+  devtools: { 
+    enabled: true 
   }
-  devtools: { enabled: true }
 })

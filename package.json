@@ -13,6 +13,7 @@
     "@libsql/client": "^0.17.0",
     "@nuxt/eslint": "^1.15.2",
     "@nuxt/ui": "^4.5.1",
+    "@nuxthub/core": "^0.10.7",
     "bcrypt": "^6.0.0",
     "drizzle-orm": "^0.45.1",
     "nuxt": "^4.3.1",
