@@ -1,3 +1,6 @@
+<script setup>
+// No extra logic needed for now, but keeping the block ready.
+</script>
 <template>
   <section class="py-16 flex flex-col items-center relative overflow-hidden">
     
@@ -31,6 +34,7 @@
     <div class="flex items-center gap-4 animate-vantage delay-3 opacity-0">
       <UButton
         label="Start Reading"
+        to="#stories"
         size="md"
         color="primary"
         variant="solid"
@@ -39,6 +43,7 @@
       
       <UButton
         label="Explore Trends"
+        to="/trends"
         variant="ghost"
         color="gray"
         size="md"
@@ -53,9 +58,7 @@
   </section>
 </template>
 
-<script setup>
-// No extra logic needed for now, but keeping the block ready.
-</script>
+
 
 <style scoped>
 /* Custom Keyframes for Smooth Slide-Up */
