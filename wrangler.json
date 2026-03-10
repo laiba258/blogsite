@@ -1,0 +1,10 @@
+{
+  "pages_build_output_dir": "dist",
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "5d41cdd3a1774a6fbbb204ab2b59530c"
+    }
+  ]
+ 
+}
