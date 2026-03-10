@@ -2,7 +2,17 @@
 const route = useRoute()
 const { data: post, pending } = await useFetch(`/api/posts/${route.params.id}`)
 
-// Agar post na mile toh home par bhej do
+// SEO Integration
+useSeoMeta({
+  title: () => post.value?.metaTitle || post.value?.title || 'Vantage Blog',
+  ogTitle: () => post.value?.metaTitle || post.value?.title,
+  description: () => post.value?.metaDescription || post.value?.description,
+  ogDescription: () => post.value?.metaDescription || post.value?.description,
+  ogImage: () => post.value?.image,
+  twitterCard: 'summary_large_image',
+  keywords: () => post.value?.keywords
+})
+
 if (!post.value && !pending.value) {
   throw createError({ statusCode: 404, statusMessage: 'Story not found' })
 }
@@ -52,7 +62,7 @@ if (!post.value && !pending.value) {
       </div>
       
       <div class="mt-20 border-t border-gray-100 dark:border-zinc-900 pt-10 text-center">
-        <p class="text-gray-400 text-xs italic font-medium">Always use this kind of wording for captions.</p>
+        <p class="text-gray-400 text-xs italic font-medium">Vantage Premium Content &copy; 2026</p>
       </div>
     </article>
   </UContainer>
