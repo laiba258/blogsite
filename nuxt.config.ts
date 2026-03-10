@@ -20,5 +20,8 @@ export default defineNuxtConfig({
     blob: true, // For image uploads
     kv: true    // For session/caching
   },
+  nitro: {
+    preset: 'cloudflare-pages' 
+  }
   devtools: { enabled: true }
 })
