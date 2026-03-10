@@ -1,6 +1,8 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-
+/**
+ * Newsletter Component
+ * Refined minimalist design with balanced typography and subtle interactions.
+ */
 const email = ref('')
 const isVisible = ref(false)
 const newsletterRef = ref(null)
@@ -10,16 +12,14 @@ onMounted(() => {
     if (entries[0].isIntersecting) {
       isVisible.value = true
     }
-  }, { threshold: 0.2 }) // Jab 20% section nazar aaye tab trigger ho
+  }, { threshold: 0.1 })
 
-  if (newsletterRef.value) {
-    observer.observe(newsletterRef.value)
-  }
+  if (newsletterRef.value) observer.observe(newsletterRef.value)
 })
 
 const handleSubscribe = () => {
   if (email.value) {
-    console.log('Subscribed:', email.value)
+    // API logic here
     email.value = ''
   }
 }
@@ -28,72 +28,83 @@ const handleSubscribe = () => {
 <template>
   <section 
     ref="newsletterRef"
-    class="py-24 border-t border-gray-100 dark:border-zinc-800 mt-20 opacity-0"
-    :class="{ 'animate-vantage': isVisible }"
+    class="py-24 border-t border-zinc-100 dark:border-zinc-800/50 mt-16 opacity-0 bg-zinc-100 transition-colors duration-700"
+    :class="{ 'animate-vantage-fade': isVisible }"
   >
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      
-      <!-- Nuxt UI Badge for Label -->
-      <UBadge
-        label="Newsletter"
-        variant="ghost"
-        color="primary"
-        class="mb-8 uppercase tracking-[0.4em] font-black text-[10px]"
-      />
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-12">
+        
+        <!-- Left Side: Refined Typography -->
+        <div class="max-w-sm space-y-4">
+          <span class="text-[10px] font-black uppercase tracking-[0.4em] text-primary-500">
+            Journal Subscription
+          </span>
+          <h2 class="text-3xl font-black uppercase italic tracking-tighter leading-tight text-zinc-900 dark:text-zinc-100">
+            Insights delivered <br />
+            <span class="text-zinc-400 dark:text-zinc-600">to your inbox.</span>
+          </h2>
+          <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-widest leading-relaxed">
+            Weekly curation of design, <br /> technology and culture.
+          </p>
+        </div>
 
-      <!-- Heading -->
-      <h2 class="text-4xl md:text-7xl font-black tracking-tighter leading-none mb-10 uppercase italic text-gray-900 dark:text-white">
-        Don't miss the <br /> 
-        <span class="text-gray-300 dark:text-zinc-700">next big story.</span>
-      </h2>
-
-      <!-- Nuxt UI Form Section -->
-      <div class="max-w-xl mx-auto mt-16">
-        <form @submit.prevent="handleSubscribe">
-          <UFormGroup help="Weekly inspiration. No noise. Pure Vantage.">
-            <div class="relative group">
-              <!-- Nuxt UI Input with Custom UI override -->
+        <!-- Right Side: Minimalist Form -->
+        <div class="w-full md:w-80">
+          <form @submit.prevent="handleSubscribe" class="relative group">
+            <UFormGroup>
               <UInput
                 v-model="email"
                 type="email"
-                placeholder="ENTER YOUR EMAIL ADDRESS"
-                size="xl"
+                placeholder="EMAIL ADDRESS"
+                size="md"
                 variant="none"
                 :ui="{
-                  base: 'w-full bg-transparent border-b-2 border-gray-200 dark:border-zinc-800 py-6 px-0 text-xl font-bold tracking-tighter text-center  focus:border-primary-500 transition-all rounded-none text-gray-900 dark:text-white',
-                  placeholder: 'placeholder-gray-300 dark:placeholder-zinc-800'
+                  base: 'w-full bg-transparent border-b border-zinc-200 dark:border-zinc-800 py-4 px-0 text-sm font-bold tracking-widest text-zinc-900 dark:text-zinc-100 focus:border-primary-500 transition-all duration-300 rounded-none',
+                  placeholder: 'placeholder-zinc-300 dark:placeholder-zinc-700'
                 }"
                 required
               />
-              <br>
-              <!-- Nuxt UI Button -->
+              
               <UButton
                 type="submit"
-                label="Join the circle"
                 variant="ghost"
                 color="gray"
-                trailing-icon="i-heroicons-arrow-right-20-solid"
-                class="mt-8 font-black tracking-widest uppercase hover:text-primary-500 group"
+                icon="i-heroicons-arrow-right-20-solid"
+                class="absolute right-0 bottom-2 hover:text-primary-500 p-0 transition-colors duration-300"
                 :ui="{ rounded: 'rounded-none' }"
               />
-            </div>
-          </UFormGroup>
-        </form>
-      </div>
+            </UFormGroup>
+            
+            <p class="mt-4 text-[9px] font-bold text-zinc-400 uppercase tracking-widest opacity-60">
+              Zero noise. Unsubscribe anytime.
+            </p>
+          </form>
+        </div>
 
+      </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.animate-vantage {
-  animation: slideUpFade 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+.animate-vantage-fade {
+  animation: elegantReveal 1s ease-out forwards;
 }
 
-@keyframes slideUpFade {
-  from { opacity: 0; transform: translateY(50px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes elegantReveal {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
 }
 
-.opacity-0 { opacity: 0; }
+/* Remove default focus shadows for a flat look */
+:deep(input:focus) {
+  box-shadow: none !important;
+  outline: none !important;
+}
 </style>

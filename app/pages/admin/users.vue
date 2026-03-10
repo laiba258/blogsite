@@ -6,7 +6,7 @@ const { data: usersList, refresh } = await useFetch('/api/admin/users')
 async function updateRole(userId, currentRole) {
   const newRole = currentRole === 'admin' ? 'user' : 'admin'
   
-  if (confirm(`User ko ${newRole} banane mein sure hain?`)) {
+  if (confirm(`Are you sure to change user to ${newRole}?`)) {
     await $fetch('/api/admin/users/role', {
       method: 'POST',
       body: { userId, newRole }

@@ -27,7 +27,7 @@ const logout = async () => {
 </script>
 
 <template>
-  <nav class="sticky top-0 z-50 bg-white dark:bg-zinc-950 border-b border-gray-100 dark:border-zinc-900">
+  <nav class="sticky top-0 z-50 backdrop-blur dark:bg-zinc-900/80  border-b border-gray-100 dark:border-zinc-800 transition-colors duration-300">
     <UContainer class="flex items-center justify-between h-16">
       
       <!-- Logo -->
