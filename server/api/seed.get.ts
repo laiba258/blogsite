@@ -3,7 +3,6 @@ import { db } from '../utils/db'
 import { posts } from '../database/schema'
 
 export default defineEventHandler(async (event) => {
-  // Purana data saaf karne ke liye (Optional)
   // await db.delete(posts) 
 
   const dummyPosts = [
