@@ -9,6 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
     "db:migrate": "npx wrangler d1 migrations apply DB --remote",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
