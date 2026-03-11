@@ -15,14 +15,38 @@ const logout = async () => {
       </div>
       
       <nav class="space-y-2">
-        <UButton to="/admin/dashboard" variant="ghost" color="gray" block class="justify-start uppercase font-bold text-[11px] tracking-widest" icon="i-heroicons-squares-2x2">Overview</UButton>
-        <UButton to="/admin/posts" variant="ghost" color="gray" block class="justify-start uppercase font-bold text-[11px] tracking-widest" icon="i-heroicons-document-text">Manage Posts</UButton>
-        <UButton to="/admin/users" variant="ghost" color="gray" block class="justify-start uppercase font-bold text-[11px] tracking-widest" icon="i-heroicons-users">Users</UButton>
-        <UButton to="/admin/seo" variant="ghost" color="gray" block class="justify-start uppercase font-bold text-[11px] tracking-widest" icon="i-heroicons-magnifying-glass">SEO Tools</UButton>
+        <UButton
+to="/admin/dashboard"
+variant="ghost"
+color="gray"
+block
+class="justify-start uppercase font-bold text-[11px] tracking-widest"
+icon="i-heroicons-squares-2x2">Overview</UButton>
+        <UButton
+to="/admin/posts"
+variant="ghost"
+color="gray"
+block
+class="justify-start uppercase font-bold text-[11px] tracking-widest"
+icon="i-heroicons-document-text">Manage Posts</UButton>
+        <UButton
+to="/admin/users"
+variant="ghost"
+color="gray"
+block
+class="justify-start uppercase font-bold text-[11px] tracking-widest"
+icon="i-heroicons-users">Users</UButton>
+        <UButton
+to="/admin/seo"
+variant="ghost"
+color="gray"
+block
+class="justify-start uppercase font-bold text-[11px] tracking-widest"
+icon="i-heroicons-magnifying-glass">SEO Tools</UButton>
       </nav>
 
       <div class="mt-20">
-        <UButton @click="logout" color="red" variant="soft" block icon="i-heroicons-arrow-left-on-rectangle">Logout</UButton>
+        <UButton color="red" variant="soft" block icon="i-heroicons-arrow-left-on-rectangle" @click="logout">Logout</UButton>
       </div>
     </aside>
 

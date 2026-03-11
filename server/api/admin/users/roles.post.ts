@@ -4,7 +4,8 @@ import { eq } from 'drizzle-orm'
 
 export default defineEventHandler(async (event) => {
   const session = await getUserSession(event)
-  if (session.user?.role !== 'admin') {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if ((session.user as any)?.role !== 'admin') {
     throw createError({ statusCode: 403, message: 'Unauthorized' })
   }
 

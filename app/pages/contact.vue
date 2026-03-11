@@ -33,7 +33,7 @@ const submitForm = () => console.log('Form Submitted:', formData.value)
 
       <!-- Right Side: Professional Form -->
       <div class="md:col-span-7 bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 p-10 rounded-3xl shadow-sm animate-vantage delay-1">
-        <form @submit.prevent="submitForm" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <form class="grid grid-cols-1 sm:grid-cols-2 gap-6" @submit.prevent="submitForm">
           <UFormGroup label="First Name" class="sm:col-span-1">
             <UInput v-model="formData.firstName" placeholder="Laiba" size="lg" />
           </UFormGroup>

@@ -35,11 +35,31 @@ async function handleLogin() {
       <p class="text-gray-500 text-sm italic">Enter your credentials to access your account.</p>
     </div>
 
-    <form @submit.prevent="handleLogin" class="space-y-4">
-      <UInput v-model="form.email" type="email" placeholder="Email Address" size="xl" color="gray" variant="outline" icon="i-heroicons-envelope" />
-      <UInput v-model="form.password" type="password" placeholder="Password" size="xl" color="gray" variant="outline" icon="i-heroicons-lock-closed" />
+    <form class="space-y-4" @submit.prevent="handleLogin">
+      <UInput
+v-model="form.email"
+type="email"
+placeholder="Email Address"
+size="xl"
+color="gray"
+variant="outline"
+icon="i-heroicons-envelope" />
+      <UInput
+v-model="form.password"
+type="password"
+placeholder="Password"
+size="xl"
+color="gray"
+variant="outline"
+icon="i-heroicons-lock-closed" />
       
-      <UButton type="submit" block size="xl" color="black" :loading="loading" class="uppercase font-black tracking-widest italic shadow-xl">
+      <UButton
+type="submit"
+block
+size="xl"
+color="black"
+:loading="loading"
+class="uppercase font-black tracking-widest italic shadow-xl">
         Sign In
       </UButton>
     </form>

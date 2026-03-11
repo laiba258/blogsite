@@ -10,11 +10,10 @@
         color="primary"
         variant="soft"
         size="md"
-        class="rounded-full px-3 py-1"
-      >
+        class="rounded-full px-3 py-1">
         <span class="relative flex h-2 w-2 mr-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"/>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-500"/>
         </span>
         <span class="font-bold tracking-widest text-[9px] uppercase">Trending Now</span>
       </UBadge>
@@ -38,8 +37,7 @@
         size="md"
         color="primary"
         variant="solid"
-        class="rounded-full px-6 py-2 font-semibold hover:scale-105 transition-transform duration-300 shadow-lg shadow-primary-500/10"
-      />
+        class="rounded-full px-6 py-2 font-semibold hover:scale-105 transition-transform duration-300 shadow-lg shadow-primary-500/10"/>
       
       <UButton
         label="Explore Trends"
@@ -48,12 +46,11 @@
         color="gray"
         size="md"
         icon="i-heroicons-arrow-up-right"
-        class="rounded-full px-6 hover:bg-gray-50 dark:hover:bg-zinc-800 transition-all"
-      />
+        class="rounded-full px-6 hover:bg-gray-50 dark:hover:bg-zinc-800 transition-all"/>
     </div>
 
     <!-- Background Decoration -->
-    <div class="absolute top-10 -z-10 w-64 h-64 bg-primary-100/50 blur-[80px] rounded-full pointer-events-none"></div>
+    <div class="absolute top-10 -z-10 w-64 h-64 bg-primary-100/50 blur-[80px] rounded-full pointer-events-none"/>
     
   </section>
 </template>

@@ -24,11 +24,11 @@ const values = [
     <UContainer class="max-w-5xl mb-32">
       <header class="animate-vantage">
         <div class="flex items-center gap-2 mb-6">
-          <span class="w-8 h-[1px] bg-primary-500"></span>
+          <span class="w-8 h-[1px] bg-primary-500"/>
           <span class="text-[10px] font-black uppercase tracking-[0.5em] text-gray-400">Our Identity</span>
         </div>
         <h1 class="text-4xl md:text-6xl font-black tracking-tighter uppercase italic leading-[1.1] text-gray-900 dark:text-white mb-10">
-          We are the lens <br /> through which the <br />
+          We are the lens <br > through which the <br >
           <span class="text-primary-500">Modern World</span> is seen.
         </h1>
         <p class="text-lg md:text-xl text-gray-500 dark:text-zinc-400 font-medium leading-relaxed max-w-2xl border-l-2 border-gray-100 dark:border-zinc-800 pl-8">
@@ -45,8 +45,7 @@ const values = [
           <img 
             src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1000&auto=format" 
             class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105" 
-            alt="Studio Space"
-          />
+            alt="Studio Space">
         </div>
         
         <!-- Values List -->

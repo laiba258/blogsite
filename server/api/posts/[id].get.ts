@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
 
   // Database se sirf wo post nikalo jiski ID match karti ho
   const post = await db.query.posts.findFirst({
-    where: eq(posts.id, parseInt(id))
+    where: eq(posts.id, id)
   })
 
   return post

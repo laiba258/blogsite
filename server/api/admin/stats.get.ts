@@ -5,7 +5,8 @@ import { sql } from 'drizzle-orm'
 export default defineEventHandler(async (event) => {
   // Admin Check
   const session = await getUserSession(event)
-  if (session.user?.role !== 'admin') {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if ((session.user as any)?.role !== 'admin') {
     throw createError({ statusCode: 403, message: 'Unauthorized' })
   }
 
@@ -13,8 +14,8 @@ export default defineEventHandler(async (event) => {
   const usersCount = await db.select({ count: sql<number>`count(*)` }).from(users)
 
   return {
-    totalPosts: postsCount[0].count,
-    totalUsers: usersCount[0].count,
+    totalPosts: postsCount[0]?.count || 0,
+    totalUsers: usersCount[0]?.count || 0,
     lastUpdated: new Date().toLocaleDateString()
   }
 })

@@ -27,7 +27,7 @@ const handleFileUpload = async (event) => {
       body: formData
     })
     editingPost.value.image = response.url
-  } catch (e) {
+  } catch {
     alert('Upload failed!')
   } finally {
     isUploading.value = false
@@ -72,7 +72,7 @@ const savePost = async () => {
     editingPost.value = { ...defaultPost }
     refresh()
     window.scrollTo({ top: 0, behavior: 'smooth' })
-  } catch (e) {
+  } catch {
     alert('Error saving post!')
   } finally {
     isSaving.value = false
@@ -102,8 +102,7 @@ const deletePost = async (id) => {
         color="primary" 
         size="xl" 
         class="font-black uppercase italic tracking-widest px-8 shadow-lg shadow-primary-500/20"
-        @click="openEditor()"
-      >
+        @click="openEditor()">
         Create New Story
       </UButton>
     </header>
@@ -175,7 +174,7 @@ const deletePost = async (id) => {
                     <div class="flex gap-2">
                       <UInput v-model="editingPost.image" placeholder="HTTPS://..." size="lg" icon="i-heroicons-photo" class="flex-1" />
                       <UButton icon="i-heroicons-cloud-arrow-up" color="primary" @click="fileInput.click()" />
-                      <input type="file" ref="fileInput" class="hidden" accept="image/*" @change="handleFileUpload" />
+                      <input ref="fileInput" type="file" class="hidden" accept="image/*" @change="handleFileUpload" >
                     </div>
                   </div>
                 </div>
@@ -188,7 +187,7 @@ const deletePost = async (id) => {
                   </div>
                   <div class="md:col-span-4">
                     <div v-if="editingPost.image" class="rounded-2xl overflow-hidden border-2 border-zinc-100 dark:border-zinc-800 shadow-lg aspect-video bg-zinc-50 dark:bg-zinc-900 flex items-center justify-center">
-                      <img :src="editingPost.image" class="w-full h-full object-cover" />
+                      <img :src="editingPost.image" class="w-full h-full object-cover" >
                     </div>
                   </div>
                 </div>

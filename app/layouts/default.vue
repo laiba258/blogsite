@@ -7,6 +7,6 @@
     <main class="container mx-auto px-4 py-10">
       <slot />
     </main>
-    <Footer />
+    <AppFooter />
 </div>
 </template>

@@ -22,12 +22,30 @@ async function handleRegister() {
       <p class="text-gray-500 text-sm italic">Create your account to start reading.</p>
     </div>
 
-    <form @submit.prevent="handleRegister" class="space-y-4">
+    <form class="space-y-4" @submit.prevent="handleRegister">
       <UInput v-model="form.name" placeholder="Full Name" size="xl" color="gray" variant="outline" />
-      <UInput v-model="form.email" type="email" placeholder="Email Address" size="xl" color="gray" variant="outline" />
-      <UInput v-model="form.password" type="password" placeholder="Password" size="xl" color="gray" variant="outline" />
+      <UInput
+v-model="form.email"
+type="email"
+placeholder="Email Address"
+size="xl"
+color="gray"
+variant="outline" />
+      <UInput
+v-model="form.password"
+type="password"
+placeholder="Password"
+size="xl"
+color="gray"
+variant="outline" />
       
-      <UButton type="submit" block size="xl" color="black" :loading="loading" class="uppercase font-black tracking-widest italic">
+      <UButton
+type="submit"
+block
+size="xl"
+color="black"
+:loading="loading"
+class="uppercase font-black tracking-widest italic">
         Create Account
       </UButton>
     </form>

@@ -33,8 +33,7 @@ onMounted(() => {
     <!-- Section Header: Includes Title and Navigation Link -->
     <div 
       class="flex items-end justify-between mb-10 border-b border-gray-100 dark:border-zinc-800 pb-6 transition-all duration-1000"
-      :class="hasScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'"
-    >
+      :class="hasScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'">
       <div>
         <h2 class="text-3xl font-black tracking-tighter uppercase italic text-gray-900 dark:text-white">
           Latest Stories
@@ -51,8 +50,7 @@ onMounted(() => {
         icon="i-heroicons-arrow-long-right" 
         trailing 
         to="/archive"
-        class="hover:text-primary-500 transition-colors uppercase font-black text-[10px] tracking-widest px-0"
-      />
+        class="hover:text-primary-500 transition-colors uppercase font-black text-[10px] tracking-widest px-0"/>
     </div>
 
     <!-- Loading State: Displayed during API fetch -->
@@ -68,16 +66,14 @@ onMounted(() => {
         :to="`/stories/${post.id}`"
         class="block group transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
         :class="hasScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'"
-        :style="{ transitionDelay: hasScrolled ? `${index * 100}ms` : '0ms' }"
-      >
+        :style="{ transitionDelay: hasScrolled ? `${index * 100}ms` : '0ms' }">
         <div class="space-y-5">
           <!-- Image Container: Aspect Ratio 16:10 -->
           <div class="relative aspect-[16/10] overflow-hidden rounded-[2rem] bg-gray-100 dark:bg-zinc-900 border border-gray-50 dark:border-zinc-800/50 shadow-sm group-hover:shadow-xl transition-all duration-500">
             <img 
               :src="post.image" 
               class="object-cover w-full h-full transition-transform duration-1000 ease-out group-hover:scale-105" 
-              loading="lazy"
-            />
+              loading="lazy">
             
             <!-- Category Badge: Positioned absolute with glass effect -->
             <div v-if="post.category" class="absolute top-4 left-4">
@@ -91,7 +87,7 @@ onMounted(() => {
           <div class="space-y-3 px-1">
             <div class="flex items-center gap-3 text-[10px] font-black text-primary-500 uppercase tracking-[0.2em]">
               <span>{{ post.readTime || '5 MIN' }} READ</span>
-              <span class="w-1.5 h-1.5 bg-gray-200 dark:bg-zinc-800 rounded-full"></span>
+              <span class="w-1.5 h-1.5 bg-gray-200 dark:bg-zinc-800 rounded-full"/>
               <span class="text-zinc-400 italic font-bold">EP. 0{{ index + 1 }}</span>
             </div>
             

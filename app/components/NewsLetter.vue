@@ -29,8 +29,7 @@ const handleSubscribe = () => {
   <section 
     ref="newsletterRef"
     class="py-24 border-t border-zinc-100 dark:border-zinc-800/50 mt-16 opacity-0 bg-zinc-100 transition-colors duration-700"
-    :class="{ 'animate-vantage-fade': isVisible }"
-  >
+    :class="{ 'animate-vantage-fade': isVisible }">
     <div class="max-w-3xl mx-auto px-6">
       <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-12">
         
@@ -40,40 +39,38 @@ const handleSubscribe = () => {
             Journal Subscription
           </span>
           <h2 class="text-3xl font-black uppercase italic tracking-tighter leading-tight text-zinc-900 dark:text-zinc-100">
-            Insights delivered <br />
+            Insights delivered <br >
             <span class="text-zinc-400 dark:text-zinc-600">to your inbox.</span>
           </h2>
           <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-widest leading-relaxed">
-            Weekly curation of design, <br /> technology and culture.
+            Weekly curation of design, <br > technology and culture.
           </p>
         </div>
 
         <!-- Right Side: Minimalist Form -->
         <div class="w-full md:w-80">
-          <form @submit.prevent="handleSubscribe" class="relative group">
-            <UFormGroup>
-              <UInput
-                v-model="email"
-                type="email"
-                placeholder="EMAIL ADDRESS"
-                size="md"
-                variant="none"
-                :ui="{
-                  base: 'w-full bg-transparent border-b border-zinc-200 dark:border-zinc-800 py-4 px-0 text-sm font-bold tracking-widest text-zinc-900 dark:text-zinc-100 focus:border-primary-500 transition-all duration-300 rounded-none',
-                  placeholder: 'placeholder-zinc-300 dark:placeholder-zinc-700'
-                }"
-                required
-              />
-              
-              <UButton
-                type="submit"
-                variant="ghost"
-                color="gray"
-                icon="i-heroicons-arrow-right-20-solid"
-                class="absolute right-0 bottom-2 hover:text-primary-500 p-0 transition-colors duration-300"
-                :ui="{ rounded: 'rounded-none' }"
-              />
-            </UFormGroup>
+          <form class="relative group" @submit.prevent="handleSubscribe">
+            <UInput
+              v-model="email"
+              type="email"
+              placeholder="EMAIL ADDRESS"
+              size="md"
+              variant="none"
+              :ui="{
+                base: 'w-full bg-transparent border-b border-zinc-200 dark:border-zinc-800 py-4 px-0 text-sm font-bold tracking-widest text-zinc-900 dark:text-zinc-100 focus:border-primary-500 transition-all duration-300 rounded-none',
+                placeholder: 'placeholder-zinc-300 dark:placeholder-zinc-700'
+              }"
+              required>
+              <template #trailing>
+                <UButton
+                  type="submit"
+                  variant="ghost"
+                  color="gray"
+                  icon="i-heroicons-arrow-right-20-solid"
+                  class="hover:text-primary-500 p-0 transition-colors duration-300"
+                  :ui="{ rounded: 'rounded-none' }" />
+              </template>
+            </UInput>
             
             <p class="mt-4 text-[9px] font-bold text-zinc-400 uppercase tracking-widest opacity-60">
               Zero noise. Unsubscribe anytime.

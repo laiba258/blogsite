@@ -8,7 +8,11 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'No file uploaded' })
   }
 
-  const file = files[0] 
+  const file = files[0]
+  if (!file || !file.filename || !file.data) {
+    throw createError({ statusCode: 400, statusMessage: 'Invalid file' })
+  }
+  
   const filename = `${Date.now()}-${file.filename}`
   const path = join(process.cwd(), 'public/uploads', filename)
 

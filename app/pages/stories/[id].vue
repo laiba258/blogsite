@@ -4,7 +4,7 @@ const { data: post, pending } = await useFetch(`/api/posts/${route.params.id}`)
 
 // Reading Progress Logic
 const scrollPercent = ref(0)
-if (process.client) {
+if (import.meta.client) {
   window.addEventListener('scroll', () => {
     const winScroll = document.body.scrollTop || document.documentElement.scrollTop
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
@@ -32,15 +32,14 @@ if (!post.value && !pending.value) {
     <!-- 1. Reading Progress Bar -->
     <div 
       class="fixed top-0 left-0 h-1 bg-primary-500 z-50 transition-all duration-150" 
-      :style="{ width: scrollPercent + '%' }"
-    ></div>
+      :style="{ width: scrollPercent + '%' }"/>
 
     <UContainer class="py-16 md:py-24 max-w-3xl">
       <!-- Loading State -->
       <div v-if="pending" class="space-y-8 animate-pulse">
-        <div class="h-4 w-24 bg-gray-200 dark:bg-zinc-800 rounded"></div>
-        <div class="h-16 w-full bg-gray-200 dark:bg-zinc-800 rounded-xl"></div>
-        <div class="aspect-video w-full bg-gray-200 dark:bg-zinc-800 rounded-3xl"></div>
+        <div class="h-4 w-24 bg-gray-200 dark:bg-zinc-800 rounded"/>
+        <div class="h-16 w-full bg-gray-200 dark:bg-zinc-800 rounded-xl"/>
+        <div class="aspect-video w-full bg-gray-200 dark:bg-zinc-800 rounded-3xl"/>
       </div>
 
       <article v-else class="article-fade-in">
@@ -50,8 +49,7 @@ if (!post.value && !pending.value) {
           variant="ghost" 
           color="gray" 
           icon="i-heroicons-arrow-left" 
-          class="mb-12 -ml-4 group hover:bg-transparent"
-        >
+          class="mb-12 -ml-4 group hover:bg-transparent">
           <span class="text-[10px] font-black uppercase tracking-[0.3em] group-hover:text-primary-500 transition-colors">
             Back to Stories
           </span>
@@ -60,7 +58,7 @@ if (!post.value && !pending.value) {
         <header class="space-y-8 mb-16 text-center md:text-left">
           <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 text-[11px] font-black text-primary-500 uppercase tracking-[0.3em]">
             <span class="px-3 py-1 bg-primary-500/10 rounded-full italic">{{ post.category }}</span>
-            <span class="w-1.5 h-1.5 bg-gray-200 dark:bg-zinc-800 rounded-full"></span>
+            <span class="w-1.5 h-1.5 bg-gray-200 dark:bg-zinc-800 rounded-full"/>
             <span class="text-gray-400 italic font-medium">{{ post.readTime || '5 min' }} read</span>
           </div>
           
@@ -77,12 +75,12 @@ if (!post.value && !pending.value) {
         <div class="relative group aspect-video overflow-hidden rounded-[2.5rem] mb-20 shadow-2xl ring-1 ring-gray-100 dark:ring-zinc-800">
           <img 
             :src="post.image" 
-            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" 
-          />
+            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
         </div>
 
         <!-- Story Content with Magazine Typography -->
-        <div class="content-body prose prose-xl dark:prose-invert max-w-none 
+        <div
+class="content-body prose prose-xl dark:prose-invert max-w-none 
                     prose-p:leading-[1.8] prose-p:mb-8 prose-p:text-gray-700 dark:prose-p:text-zinc-300
                     prose-headings:text-zinc-900 dark:prose-headings:text-white">
           <div class="whitespace-pre-line font-medium drop-cap">

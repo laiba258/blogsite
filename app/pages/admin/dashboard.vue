@@ -1,7 +1,7 @@
 <script setup>
 definePageMeta({ layout: 'admin' })
 
-const { data: stats, pending } = await useFetch('/api/admin/stats')
+const { data: stats } = await useFetch('/api/admin/stats')
 
 const quickLinks = [
   { title: 'Create Post', icon: 'i-heroicons-document-plus', to: '/admin/posts', color: 'primary' },
@@ -71,8 +71,7 @@ const quickLinks = [
           size="xl"
           :color="link.color"
           variant="soft"
-          class="flex-col gap-3 py-8 rounded-3xl font-black uppercase italic tracking-tighter"
-        >
+          class="flex-col gap-3 py-8 rounded-3xl font-black uppercase italic tracking-tighter">
           {{ link.title }}
         </UButton>
       </div>
@@ -83,11 +82,11 @@ const quickLinks = [
       <h3 class="font-black uppercase italic mb-4">Latest System Updates</h3>
       <ul class="space-y-4">
         <li class="flex items-center gap-3 text-sm text-gray-500 italic">
-          <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+          <span class="w-2 h-2 bg-green-500 rounded-full"/>
           Database Migration Successful (SQLite)
         </li>
         <li class="flex items-center gap-3 text-sm text-gray-500 italic">
-          <span class="w-2 h-2 bg-blue-500 rounded-full"></span>
+          <span class="w-2 h-2 bg-blue-500 rounded-full"/>
           Drizzle ORM Connected
         </li>
       </ul>

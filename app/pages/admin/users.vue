@@ -48,18 +48,16 @@ async function updateRole(userId, currentRole) {
               <UBadge 
                 :color="user.role === 'admin' ? 'primary' : 'gray'" 
                 variant="soft" 
-                class="uppercase font-black text-[9px] px-2"
-              >
+                class="uppercase font-black text-[9px] px-2">
                 {{ user.role }}
               </UBadge>
             </td>
             <td class="p-5 text-right">
               <UButton 
-                @click="updateRole(user.id, user.role)"
-                variant="ghost" 
-                color="gray"
+                variant="ghost"
+                color="gray" 
                 class="text-[10px] font-black uppercase tracking-widest hover:text-primary-500"
-              >
+                @click="updateRole(user.id, user.role)">
                 Change Role
               </UButton>
             </td>

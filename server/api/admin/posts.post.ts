@@ -5,7 +5,8 @@ import { eq } from 'drizzle-orm'
 export default defineEventHandler(async (event) => {
   // Security Check: Sirf admin hi ye kam kar sake
   const session = await getUserSession(event)
-  if (session.user?.role !== 'admin') {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if ((session.user as any)?.role !== 'admin') {
     throw createError({ statusCode: 403, message: 'Unauthorized' })
   }
 
@@ -19,7 +20,7 @@ export default defineEventHandler(async (event) => {
     // Create new post
     return await db.insert(posts).values({
       ...postData,
-      date: new Date().toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: '2026' })
+      date: new Date().toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' })
     })
   }
 })

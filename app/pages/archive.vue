@@ -32,13 +32,13 @@ const filteredPosts = computed(() => {
     <!-- Category Filter: Active state add kar di hai -->
     <div class="flex flex-wrap gap-4 mb-16 border-b border-gray-100 dark:border-zinc-900 pb-8 overflow-x-auto">
       <button 
-        v-for="cat in categories" :key="cat"
-        @click="selectedCategory = cat"
+        v-for="cat in categories"
+:key="cat"
         class="text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 rounded-full border transition-all"
         :class="selectedCategory === cat 
           ? 'bg-primary-500 text-white border-primary-500 shadow-lg shadow-primary-500/20' 
           : 'border-gray-200 dark:border-zinc-800 hover:border-primary-500 text-gray-500'"
-      >
+        @click="selectedCategory = cat">
         {{ cat }}
       </button>
     </div>
@@ -50,8 +50,7 @@ const filteredPosts = computed(() => {
           v-for="(post, index) in filteredPosts" 
           :key="post.id"
           :to="`/blog/${post.id}`"
-          class="group flex flex-col md:flex-row md:items-center justify-between py-8 border-b border-gray-50 dark:border-zinc-900 transition-all hover:px-4"
-        >
+          class="group flex flex-col md:flex-row md:items-center justify-between py-8 border-b border-gray-50 dark:border-zinc-900 transition-all hover:px-4">
           <div class="flex items-center gap-6">
             <span class="text-gray-300 dark:text-zinc-800 font-black text-2xl italic">
               {{ (index + 1).toString().padStart(2, '0') }}
@@ -72,8 +71,7 @@ const filteredPosts = computed(() => {
             <span class="text-sm font-medium text-gray-400 italic">{{ post.date }}</span>
             <UIcon 
               name="i-heroicons-arrow-up-right" 
-              class="w-6 h-6 text-gray-300 group-hover:text-primary-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" 
-            />
+              class="w-6 h-6 text-gray-300 group-hover:text-primary-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"/>
           </div>
         </NuxtLink>
       </div>
