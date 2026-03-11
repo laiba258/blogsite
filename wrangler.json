@@ -5,7 +5,8 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "db"
+      "database_name": "db",
+      "database_id": "578810bc-c1a7-4c87-833d-7e42557e418d"
     }
   ]
 }
