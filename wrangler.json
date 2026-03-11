@@ -3,7 +3,8 @@
   "pages_build_output_dir": ".output/public",
   "compatibility_date": "2024-11-01",
   "d1_databases": [
-    {
+   
+   s {
       "binding": "DB",
       "database_name": "db",
       "database_id": "578810bc-c1a7-4c87-833d-7e42557e418d"
