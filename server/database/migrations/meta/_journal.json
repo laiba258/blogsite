@@ -8,6 +8,13 @@
       "when": 1773147892452,
       "tag": "0000_young_zodiak",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1773230176206,
+      "tag": "0001_youthful_pet_avengers",
+      "breakpoints": true
     }
   ]
 }
