@@ -14,12 +14,9 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   ui: {
-    content: true,
     global: true,
     primary: 'black',
     gray: 'zinc',
-    card: { rounded: 'rounded-2xl' },
-    experimental: { componentDetection: true }
   },
 
   experimental: {
@@ -38,9 +35,9 @@ export default defineNuxtConfig({
       nodeCompat: true,
       pages: {
         attributes: {
-          // Cloudflare D1 binding fix
           d1_databases: {
-            DB: '578810bc-c1a7-4c87-833d-7e42557e418d' // 
+            DB: '578810bc-c1a7-4c87-833d-7e42557e418d'
+          }
         }
       }
     }
@@ -54,5 +51,5 @@ export default defineNuxtConfig({
 
   eslint: { 
     config: { stylistic: true } 
-  },
+  }
 })
