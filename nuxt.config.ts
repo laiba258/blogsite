@@ -1,12 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01', // Cloudflare ki stability ke liye isey 2024-11-01 rakhein
-
+  compatibilityDate: '2024-11-01', 
   modules: [
     '@nuxt/eslint',
     '@nuxt/ui',
     '@nuxthub/core',
-    '@nuxt/image', // Image module wapas add kar diya
+    '@nuxt/image', 
     'nuxt-auth-utils',
   ],
 
@@ -33,15 +32,22 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'cloudflare-pages', // Pages ke liye ye preset sab se stable hai
+    preset: 'cloudflare-pages', 
     cloudflare: { 
       deployConfig: true, 
-      nodeCompat: true 
+      nodeCompat: true,
+      pages: {
+        attributes: {
+          // Cloudflare D1 binding fix
+          d1_databases: {
+            DB: '578810bc-c1a7-4c87-833d-7e42557e418d' // 
+        }
+      }
     }
   },
 
   hub: { 
-    database: true, // Database 'true' rakhein kyunke humne dashboard par 'db' banaya hai
+    database: true, 
     blob: false, 
     kv: false 
   },
