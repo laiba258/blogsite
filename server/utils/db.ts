@@ -1,4 +1,10 @@
-import { drizzle } from 'drizzle-orm/d1'
-import * as schema from '../database/schema'
+// server/utils/db.ts
+import { drizzle } from 'drizzle-orm/libsql';
+import { createClient } from '@libsql/client';
+import * as schema from '../database/schema';
 
-export const db = drizzle(hubDatabase(), { schema })
+const client = createClient({
+  url: 'file:local.db',
+});
+
+export const db = drizzle(client, { schema });
