@@ -4,7 +4,6 @@ import { ref, computed } from 'vue'
 const isOpen = ref(false)
 const colorMode = useColorMode()
 
-// Session check karne ke liye hook
 const { loggedIn, user, clear } = useUserSession()
 
 // Dark Mode Toggle Logic
@@ -13,7 +12,6 @@ const isDark = computed({
   set () { colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark' }
 })
 
-// Base links jo sab ko dikhen gay
 const links = [
   { label: 'Trends', to: '/trends' },
   { label: 'About', to: '/about' },
@@ -38,19 +36,19 @@ const logout = async () => {
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center gap-8">
         <NuxtLink 
-          v-for="link in links"
-          :key="link.to"
-          :to="link.to"
+          v-for="link in links" :key="link.to" :to="link.to"
           class="text-[11px] font-bold uppercase tracking-widest text-gray-400 hover:text-black dark:hover:text-white transition-colors"
-          active-class="text-primary-500">
+          active-class="text-primary-500"
+        >
           {{ link.label }}
         </NuxtLink>
 
-        <!-- Admin Dashboard Button (Sirf Admin ko dikhay ga) -->
+        <!-- Admin Dashboard Button-->
         <NuxtLink 
           v-if="loggedIn && user?.role === 'admin'" 
           to="/admin/dashboard"
-          class="text-[11px] font-black uppercase tracking-widest px-3 py-1 bg-primary-500 text-white italic rounded shadow-lg hover:bg-primary-600 transition-all">
+          class="text-[11px] font-black uppercase tracking-widest px-3 py-1 bg-primary-500 text-white italic rounded shadow-lg hover:bg-primary-600 transition-all"
+        >
           Dashboard
         </NuxtLink>
 
@@ -58,13 +56,15 @@ const logout = async () => {
         <NuxtLink 
           v-if="!loggedIn" 
           to="/login"
-          class="text-[11px] font-bold uppercase tracking-widest text-gray-400 hover:text-black dark:hover:text-white">
+          class="text-[11px] font-bold uppercase tracking-widest text-gray-400 hover:text-black dark:hover:text-white"
+        >
           Login
         </NuxtLink>
         <button 
           v-else 
+          @click="logout"
           class="text-[11px] font-bold uppercase tracking-widest text-red-500 hover:text-red-700"
-          @click="logout">
+        >
           Logout
         </button>
 
@@ -73,7 +73,8 @@ const logout = async () => {
           :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'"
           color="gray"
           variant="ghost"
-          @click="isDark = !isDark" />
+          @click="isDark = !isDark"
+        />
       </div>
 
       <!-- Mobile Controls -->
@@ -82,53 +83,32 @@ const logout = async () => {
           :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'"
           color="gray"
           variant="ghost"
-          @click="isDark = !isDark" />
+          @click="isDark = !isDark"
+        />
         <UButton 
           icon="i-heroicons-bars-3-bottom-right" 
           color="gray" 
           variant="ghost" 
-          @click="isOpen = true" />
+          @click="isOpen = true" 
+        />
       </div>
 
-      <!-- Mobile Sidebar with USlideover -->
-      <USlideover 
-        v-model="isOpen" 
-        side="right"
-        :ui="{
-          background: 'bg-white dark:bg-zinc-950',
-          overlay: {
-            background: 'bg-gray-200/75 dark:bg-gray-800/75'
-          }
-        }">
-        <UCard 
-          class="flex flex-col flex-1 h-full bg-white dark:bg-zinc-950"
-          :ui="{ 
-            body: { base: 'flex-1 flex flex-col', padding: 'p-6 sm:p-6' },
-            ring: '',
-            divide: 'divide-y divide-gray-100 dark:divide-zinc-800',
-            background: 'bg-white dark:bg-zinc-950'
-          }">
-          
-          <template #header>
-            <div class="flex items-center justify-between">
-              <h3 class="text-base font-black uppercase italic tracking-tighter">Menu</h3>
-              <UButton 
-                color="gray" 
-                variant="ghost" 
-                icon="i-heroicons-x-mark-20-solid" 
-                class="-my-1"
-                @click="isOpen = false" />
-            </div>
-          </template>
+      <!-- Mobile Sidebar -->
+      <div v-if="isOpen" class="fixed inset-0 z-60 md:hidden">
+        <div class="absolute inset-0 bg-black/40 transition-opacity" @click="isOpen = false"></div>
+        
+        <div class="absolute right-0 top-0 h-full w-[260px] bg-white dark:bg-zinc-950 p-8 shadow-2xl flex flex-col">
+          <div class="flex justify-end mb-12">
+            <UButton color="gray" variant="ghost" icon="i-heroicons-x-mark" class="rounded-full" @click="isOpen = false" />
+          </div>
 
-          <div class="flex flex-col gap-6 py-4">
+          <div class="flex flex-col gap-8">
             <NuxtLink 
-              v-for="link in links"
-              :key="link.to"
-              :to="link.to"
-              class="text-sm font-bold uppercase tracking-widest text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors"
+              v-for="link in links" :key="link.to" :to="link.to"
+              @click="isOpen = false"
+              class="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400"
               active-class="text-primary-500"
-              @click="isOpen = false">
+            >
               {{ link.label }}
             </NuxtLink>
 
@@ -136,36 +116,22 @@ const logout = async () => {
             <NuxtLink 
               v-if="loggedIn && user?.role === 'admin'" 
               to="/admin/dashboard"
-              class="text-sm font-bold uppercase tracking-widest text-primary-500 italic hover:text-primary-600 transition-colors"
-              @click="isOpen = false">
+              @click="isOpen = false"
+              class="text-xs font-bold uppercase tracking-[0.2em] text-primary-500 italic"
+            >
               Dashboard
             </NuxtLink>
 
-            <div class="border-t border-gray-100 dark:border-zinc-800 pt-6 mt-2">
-              <!-- Mobile Login/Logout -->
-              <NuxtLink 
-                v-if="!loggedIn" 
-                to="/login" 
-                class="text-sm font-bold uppercase tracking-widest text-gray-600 dark:text-gray-400 hover:text-primary-500 transition-colors" 
-                @click="isOpen = false">
-                Login
-              </NuxtLink>
-              <button 
-                v-else 
-                class="text-left text-sm font-bold uppercase tracking-widest text-red-500 hover:text-red-600 transition-colors" 
-                @click="logout">
-                Logout
-              </button>
-            </div>
+            <!-- Mobile Login/Logout -->
+            <NuxtLink v-if="!loggedIn" to="/login" @click="isOpen = false" class="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Login</NuxtLink>
+            <button v-else @click="logout" class="text-left text-xs font-bold uppercase tracking-[0.2em] text-red-500">Logout</button>
           </div>
 
-          <template #footer>
-            <div class="text-center">
-              <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Vantage © 2026</p>
-            </div>
-          </template>
-        </UCard>
-      </USlideover>
+          <div class="mt-auto pt-6 border-t border-gray-100 dark:border-zinc-900">
+            <p class="text-[9px] font-bold text-gray-400 uppercase tracking-widest text-center">Vantage © 2026</p>
+          </div>
+        </div>
+      </div>
 
     </UContainer>
   </nav>
