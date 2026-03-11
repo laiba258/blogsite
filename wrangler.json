@@ -2,8 +2,7 @@
   "pages_build_output_dir": "dist",
   "compatibility_date": "2024-04-03",
   "kv_namespaces": [
-    
-    {
+ {
       "binding": "KV",
       "id": "5d41cdd3a1774a6fbbb204ab2b59530c"
     }
