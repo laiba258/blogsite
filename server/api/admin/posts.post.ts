@@ -17,8 +17,10 @@ export default defineEventHandler(async (event) => {
     // Update existing post
     return await db.update(posts).set(postData).where(eq(posts.id, id))
   } else {
-    // Create new post
+    // Create new post with UUID
+    const newId = crypto.randomUUID()
     return await db.insert(posts).values({
+      id: newId,
       ...postData,
       date: new Date().toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' })
     })
