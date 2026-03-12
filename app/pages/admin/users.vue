@@ -11,7 +11,7 @@ async function updateRole(userId, currentRole) {
       method: 'POST',
       body: { userId, newRole }
     })
-    refresh() // List update karo
+    refresh()
   }
 }
 </script>

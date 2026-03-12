@@ -11,10 +11,8 @@ async function handleLogin() {
       body: form 
     })
     
-    // Session refresh karo taake Nuxt ko pata chale user login ho gaya
     await refreshSession()
     
-    // Agar admin hai toh dashboard, warna home
     if (response.role === 'admin') {
       useRouter().push('/admin/dashboard')
     } else {

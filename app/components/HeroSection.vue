@@ -1,5 +1,4 @@
 <script setup>
-// No extra logic needed for now, but keeping the block ready.
 </script>
 <template>
   <section class="py-16 flex flex-col items-center relative overflow-hidden">

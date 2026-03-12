@@ -2,7 +2,6 @@
 const route = useRoute()
 const { data: post, pending } = await useFetch(`/api/posts/${route.params.id}`)
 
-// Reading Progress Logic
 const scrollPercent = ref(0)
 if (import.meta.client) {
   window.addEventListener('scroll', () => {
@@ -12,7 +11,6 @@ if (import.meta.client) {
   })
 }
 
-// SEO Integration
 useSeoMeta({
   title: () => post.value?.metaTitle || post.value?.title || 'Vantage Blog',
   ogTitle: () => post.value?.metaTitle || post.value?.title,

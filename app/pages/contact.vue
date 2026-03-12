@@ -1,7 +1,37 @@
 
 <script setup>
 const formData = ref({ firstName: '', lastName: '', email: '', subject: 'General Inquiry', message: '' })
-const submitForm = () => console.log('Form Submitted:', formData.value)
+const isSubmitting = ref(false)
+const toast = useToast()
+
+const submitForm = async () => {
+  isSubmitting.value = true
+  try {
+    await $fetch('/api/contact', { 
+      method: 'POST', 
+      body: formData.value 
+    })
+    
+    toast.add({ 
+      title: 'Message Sent!', 
+      description: 'We will get back to you soon.',
+      icon: 'i-heroicons-check-circle',
+      color: 'primary' 
+    })
+    
+    // Reset form
+    formData.value = { firstName: '', lastName: '', email: '', subject: 'General Inquiry', message: '' }
+  } catch (error) {
+    toast.add({ 
+      title: 'Error', 
+      description: 'Failed to send message. Please try again.',
+      icon: 'i-heroicons-x-circle',
+      color: 'red' 
+    })
+  } finally {
+    isSubmitting.value = false
+  }
+}
 </script>
 <template>
   <UContainer class="py-24 max-w-5xl">
@@ -55,7 +85,13 @@ const submitForm = () => console.log('Form Submitted:', formData.value)
           </UFormGroup>
 
           <div class="sm:col-span-2 pt-4">
-            <UButton type="submit" label="Send Message" size="xl" block class="rounded-xl font-black uppercase tracking-widest shadow-md transition-transform hover:scale-[1.01]" />
+            <UButton 
+              type="submit" 
+              label="Send Message" 
+              size="xl" 
+              block 
+              :loading="isSubmitting"
+              class="rounded-xl font-black uppercase tracking-widest shadow-md transition-transform hover:scale-[1.01]" />
           </div>
         </form>
       </div>

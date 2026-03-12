@@ -11,7 +11,7 @@ const defaultPost = {
   metaTitle: '', metaDescription: '', keywords: ''
 }
 const isUploading = ref(false)
-const fileInput = ref(null) // Ref for hidden input - INTACT
+const fileInput = ref(null)
 
 const handleFileUpload = async (event) => {
   const file = event.target.files[0]
@@ -89,7 +89,7 @@ const deletePost = async (id) => {
 
 <template>
   <div class="space-y-12 pb-24 px-4 sm:px-0">
-    <!-- Header Section - ORIGINAL -->
+    <!-- Header Section -->
     <header class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-gray-100 dark:border-zinc-800 pb-8 gap-4">
       <div>
         <h2 class="text-5xl font-black uppercase italic tracking-tighter text-zinc-900 dark:text-white">
@@ -107,7 +107,7 @@ const deletePost = async (id) => {
       </UButton>
     </header>
 
-    <!-- Table Section - ORIGINAL -->
+    <!-- Table Section -->
     <div class="bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-2xl overflow-hidden shadow-sm">
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse min-w-[640px]">
@@ -134,7 +134,7 @@ const deletePost = async (id) => {
       </div>
     </div>
 
-    <!-- IN-PAGE EDITOR CARD - STYLE RESTORED -->
+    <!-- IN-PAGE EDITOR CARD -->
     <div v-if="showEditor" ref="editorRef" class="pt-8 animate-in transition-all duration-500">
       <div class="bg-white dark:bg-zinc-950 border-2 border-zinc-200 dark:border-zinc-800 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-primary-500/10">
         
@@ -154,7 +154,6 @@ const deletePost = async (id) => {
         <div class="p-8">
           <UTabs :items="tabs" class="w-full" :ui="{ list: { background: 'bg-zinc-100 dark:bg-zinc-900', marker: { background: 'bg-white dark:bg-zinc-800 shadow-lg' }, tab: { font: 'font-black uppercase tracking-widest text-[11px]' } } }">
             
-            <!-- 1. CONTENT TAB - EXACT ALIGNMENT -->
             <template #content>
               <div class="space-y-8 pt-8">
                 <div class="space-y-2">
@@ -162,16 +161,17 @@ const deletePost = async (id) => {
                   <UInput v-model="editingPost.title" placeholder="ENTER TITLE..." size="xl" class="font-bold uppercase italic" />
                 </div>
 
+                <!-- Fixed Grid for Dropdown Visibility -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  <div class="space-y-2">
+                  <div class="space-y-2 w-full">
                     <label class="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 ml-1">02. Taxonomy (Category): </label>
-                    <USelect v-model="editingPost.category" :options="categoryOptions" size="lg" icon="i-heroicons-tag" />
+                    <USelect v-model="editingPost.category" :options="categoryOptions" size="lg" icon="i-heroicons-tag" class="w-full" />
                   </div>
-                  <div class="space-y-2">
+                  <div class="space-y-2 w-full">
                     <label class="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 ml-1">03. Read Duration: </label>
-                    <UInput v-model="editingPost.readTime" placeholder="e.g. 5 MIN" size="lg" icon="i-heroicons-clock" />
+                    <UInput v-model="editingPost.readTime" placeholder="e.g. 5 MIN" size="lg" icon="i-heroicons-clock" class="w-full" />
                   </div>
-                  <div class="space-y-2">
+                  <div class="space-y-2 w-full">
                     <label class="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 ml-1">04. Cover Image: </label>
                     <div class="flex gap-2">
                       <UInput v-model="editingPost.image" placeholder="HTTPS://..." size="lg" icon="i-heroicons-photo" class="flex-1" />
@@ -181,7 +181,6 @@ const deletePost = async (id) => {
                   </div>
                 </div>
 
-                <!-- Aspect Video Preview Restored -->
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
                   <div class="md:col-span-8 space-y-2">
                     <label class="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 ml-1">05. Teaser Narrative (Summary): </label>
@@ -201,7 +200,6 @@ const deletePost = async (id) => {
               </div>
             </template>
 
-            <!-- 2. SEO TAB - RESTORED LABELS -->
             <template #seo>
               <div class="pt-8 grid grid-cols-1 md:grid-cols-12 gap-12">
                 <div class="md:col-span-7 space-y-8">
@@ -234,7 +232,6 @@ const deletePost = async (id) => {
             </template>
           </UTabs>
 
-          <!-- Action Buttons - RESTORED -->
           <div class="mt-12 flex justify-between items-center border-t border-zinc-100 dark:border-zinc-900 pt-8">
             <UButton variant="ghost" color="gray" class="font-black uppercase tracking-widest text-[10px]" @click="showEditor = false">Discard changes</UButton>
             <UButton color="primary" size="xl" class="px-12 font-black uppercase italic tracking-widest shadow-2xl shadow-primary-500/40" :loading="isSaving" @click="savePost">

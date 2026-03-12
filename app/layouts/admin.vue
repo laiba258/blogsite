@@ -16,33 +16,50 @@ const logout = async () => {
       
       <nav class="space-y-2">
         <UButton
-to="/admin/dashboard"
-variant="ghost"
-color="gray"
-block
-class="justify-start uppercase font-bold text-[11px] tracking-widest"
-icon="i-heroicons-squares-2x2">Overview</UButton>
+          to="/admin/dashboard"
+          variant="ghost"
+          color="gray"
+          block
+          class="justify-start uppercase font-bold text-[11px] tracking-widest"
+          icon="i-heroicons-squares-2x2">
+          Overview
+        </UButton>
         <UButton
-to="/admin/posts"
-variant="ghost"
-color="gray"
-block
-class="justify-start uppercase font-bold text-[11px] tracking-widest"
-icon="i-heroicons-document-text">Manage Posts</UButton>
+          to="/admin/posts"
+          variant="ghost"
+          color="gray"
+          block
+          class="justify-start uppercase font-bold text-[11px] tracking-widest"
+          icon="i-heroicons-document-text">
+          Manage Posts
+        </UButton>
         <UButton
-to="/admin/users"
-variant="ghost"
-color="gray"
-block
-class="justify-start uppercase font-bold text-[11px] tracking-widest"
-icon="i-heroicons-users">Users</UButton>
+          to="/admin/users"
+          variant="ghost"
+          color="gray"
+          block
+          class="justify-start uppercase font-bold text-[11px] tracking-widest"
+          icon="i-heroicons-users">
+          Users
+        </UButton>
         <UButton
-to="/admin/seo"
-variant="ghost"
-color="gray"
-block
-class="justify-start uppercase font-bold text-[11px] tracking-widest"
-icon="i-heroicons-magnifying-glass">SEO Tools</UButton>
+          to="/admin/pages"
+          variant="ghost"
+          color="gray"
+          block
+          class="justify-start uppercase font-bold text-[11px] tracking-widest"
+          icon="i-heroicons-document-duplicate">
+          Static Pages
+        </UButton>
+        <UButton
+          to="/admin/seo"
+          variant="ghost"
+          color="gray"
+          block
+          class="justify-start uppercase font-bold text-[11px] tracking-widest"
+          icon="i-heroicons-magnifying-glass">
+          SEO Tools
+        </UButton>
       </nav>
 
       <div class="mt-20">
@@ -56,4 +73,3 @@ icon="i-heroicons-magnifying-glass">SEO Tools</UButton>
     </main>
   </div>
 </template>
-

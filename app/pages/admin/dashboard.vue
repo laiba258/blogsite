@@ -6,6 +6,7 @@ const { data: stats } = await useFetch('/api/admin/stats')
 const quickLinks = [
   { title: 'Create Post', icon: 'i-heroicons-document-plus', to: '/admin/posts', color: 'primary' },
   { title: 'Manage Users', icon: 'i-heroicons-users', to: '/admin/users', color: 'orange' },
+  { title: 'Edit Pages', icon: 'i-heroicons-document-duplicate', to: '/admin/pages', color: 'green' },
   { title: 'SEO Settings', icon: 'i-heroicons-magnifying-glass', to: '/admin/seo', color: 'blue' }
 ]
 </script>

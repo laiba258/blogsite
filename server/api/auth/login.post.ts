@@ -6,23 +6,20 @@ import bcrypt from 'bcrypt'
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
 
-  // 1. User ko email se dhoondo
   const user = await db.query.users.findFirst({
     where: eq(users.email, body.email)
   })
 
   if (!user) {
-    throw createError({ statusCode: 401, message: 'User nahi mila!' })
+    throw createError({ statusCode: 401, message: 'User not found!' })
   }
 
-  // 2. Password match karo (Bcrypt ke zariye)
   const isPasswordCorrect = await bcrypt.compare(body.password, user.password)
 
   if (!isPasswordCorrect) {
-    throw createError({ statusCode: 401, message: 'Ghalat Password!' })
+    throw createError({ statusCode: 401, message: 'Invalid password!' })
   }
 
-  // 3. Session Set karo (Nuxt Auth Utils)
   await setUserSession(event, {
     user: {
       id: user.id,

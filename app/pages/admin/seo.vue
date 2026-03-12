@@ -1,7 +1,6 @@
 <script setup>
 definePageMeta({ layout: 'admin' })
 
-// In real life, ye data database se fetch hoga
 const { data: globalSeo, refresh } = await useFetch('/api/admin/seo-config')
 
 const settings = ref({
@@ -19,7 +18,6 @@ const toast = useToast()
 const saveGlobalSeo = async () => {
   isSaving.value = true
   try {
-    // API call to save settings
     await $fetch('/api/admin/seo-config', { method: 'POST', body: settings.value })
     toast.add({ title: 'System Updated', icon: 'i-heroicons-check-circle', color: 'primary' })
   } catch (e) {

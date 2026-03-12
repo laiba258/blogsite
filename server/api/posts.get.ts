@@ -1,6 +1,7 @@
-// server/api/posts.get.ts
 import { db } from '../utils/db'
+import { posts } from '../database/schema'
 
 export default defineEventHandler(async () => {
-  return await db.query.posts.findMany()
+  const allPosts = await db.select().from(posts)
+  return allPosts
 })

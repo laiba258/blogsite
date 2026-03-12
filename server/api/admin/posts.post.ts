@@ -3,7 +3,7 @@ import { posts } from '../../database/schema'
 import { eq } from 'drizzle-orm'
 
 export default defineEventHandler(async (event) => {
-  // Security Check: Sirf admin hi ye kam kar sake
+  // Admin authentication check
   const session = await getUserSession(event)
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   if ((session.user as any)?.role !== 'admin') {

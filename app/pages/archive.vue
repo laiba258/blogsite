@@ -1,12 +1,12 @@
 <script setup>
-// 1. Database se posts mangwao
+// Fetch all posts from database
 const { data: allPosts } = await useFetch('/api/posts')
 
-// 2. Filter ke liye reactive variables
+// Reactive filter variables
 const selectedCategory = ref('All')
 const categories = ['All', 'Tech', 'Design', 'Tutorial', 'Opinion']
 
-// 3. Filter logic: Agar 'All' select hai toh sab dikhao, warna sirf specific category
+// Filter posts by selected category
 const filteredPosts = computed(() => {
   if (!allPosts.value) return []
   if (selectedCategory.value === 'All') return allPosts.value
@@ -49,7 +49,7 @@ const filteredPosts = computed(() => {
         <NuxtLink 
           v-for="(post, index) in filteredPosts" 
           :key="post.id"
-          :to="`/blog/${post.id}`"
+          :to="`/stories/${post.id}`"
           class="group flex flex-col md:flex-row md:items-center justify-between py-8 border-b border-gray-50 dark:border-zinc-900 transition-all hover:px-4">
           <div class="flex items-center gap-6">
             <span class="text-gray-300 dark:text-zinc-800 font-black text-2xl italic">
@@ -76,7 +76,6 @@ const filteredPosts = computed(() => {
         </NuxtLink>
       </div>
       
-      <!-- Empty State: Agar us category mein kuch na ho -->
       <div v-else class="py-20 text-center">
         <p class="text-gray-400 italic">No stories found in this category yet.</p>
       </div>

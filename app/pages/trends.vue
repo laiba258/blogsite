@@ -1,33 +1,12 @@
 <script setup>
-const trendingPosts = [
-  { 
-    id: 1, 
-    title: 'The Evolution of Minimalist Architecture', 
-    category: 'Architecture', 
-    readTime: '6 min',
-    excerpt: 'How modern structures are embracing the "Less is More" philosophy by prioritizing natural light and raw materials over ornamental clutter.',
-    author: 'Laiba Naseer',
-    image: 'https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1000' 
-  },
-  { 
-    id: 2, 
-    title: 'Quantum Computing: From Theory to Utility', 
-    category: 'Technology', 
-    readTime: '8 min',
-    excerpt: 'A deep dive into how quantum processing is finally moving out of the lab and into real-world applications for encryption and logistics.',
-    author: 'Vantage Tech',
-    image: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=1000' 
-  },
-  { 
-    id: 3, 
-    title: 'The Rise of Regenerative Urbanism', 
-    category: 'Environment', 
-    readTime: '5 min',
-    excerpt: 'Beyond sustainability, urban planners are now designing cities that actually contribute back to the local ecosystem through bio-filtration.',
-    author: 'Editorial Team',
-    image: 'https://images.unsplash.com/photo-1518005020480-1cd30491866e?q=80&w=1000' 
-  }
-]
+// Fetch real posts from database
+const { data: allPosts } = await useFetch('/api/posts')
+
+// Display top 3 trending posts
+const trendingPosts = computed(() => {
+  if (!allPosts.value) return []
+  return allPosts.value.slice(0, 3)
+})
 </script>
 
 <template>
@@ -59,7 +38,7 @@ const trendingPosts = [
 
         <!-- Image (Middle Column) -->
         <div class="md:col-span-5">
-          <NuxtLink :to="`/blog/${post.id}`" class="block aspect-[4/3] overflow-hidden rounded-xl bg-gray-100 dark:bg-zinc-900">
+          <NuxtLink :to="`/stories/${post.id}`" class="block aspect-[4/3] overflow-hidden rounded-xl bg-gray-100 dark:bg-zinc-900">
             <img 
               :src="post.image" 
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
@@ -68,18 +47,18 @@ const trendingPosts = [
 
         <!-- Content (Right Column) -->
         <div class="md:col-span-5 space-y-4 pt-2">
-          <NuxtLink :to="`/blog/${post.id}`">
+          <NuxtLink :to="`/stories/${post.id}`">
             <h2 class="text-2xl font-black tracking-tight uppercase italic leading-snug group-hover:text-primary-500 transition-colors">
               {{ post.title }}
             </h2>
           </NuxtLink>
           <p class="text-sm text-gray-500 dark:text-zinc-400 leading-relaxed font-medium">
-            {{ post.excerpt }}
+            {{ post.description }}
           </p>
           <div class="flex items-center gap-2 pt-2">
-            <span class="text-[10px] font-black uppercase tracking-widest text-gray-900 dark:text-white">By {{ post.author }}</span>
+            <span class="text-[10px] font-black uppercase tracking-widest text-gray-900 dark:text-white">By Editorial Team</span>
             <span class="w-1 h-[1px] bg-gray-300"/>
-            <NuxtLink :to="`/blog/${post.id}`" class="text-[10px] font-black uppercase tracking-widest text-primary-500 hover:underline">Read Story</NuxtLink>
+            <NuxtLink :to="`/stories/${post.id}`" class="text-[10px] font-black uppercase tracking-widest text-primary-500 hover:underline">Read Story</NuxtLink>
           </div>
         </div>
       </article>

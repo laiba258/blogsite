@@ -6,6 +6,8 @@
 const email = ref('')
 const isVisible = ref(false)
 const newsletterRef = ref(null)
+const isSubmitting = ref(false)
+const toast = useToast()
 
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
@@ -17,10 +19,33 @@ onMounted(() => {
   if (newsletterRef.value) observer.observe(newsletterRef.value)
 })
 
-const handleSubscribe = () => {
-  if (email.value) {
-    // API logic here
+const handleSubscribe = async () => {
+  if (!email.value) return
+  
+  isSubmitting.value = true
+  try {
+    await $fetch('/api/newsletter', { 
+      method: 'POST', 
+      body: { email: email.value } 
+    })
+    
+    toast.add({ 
+      title: 'Subscribed!', 
+      description: 'Welcome to the Vantage community.',
+      icon: 'i-heroicons-check-circle',
+      color: 'primary' 
+    })
+    
     email.value = ''
+  } catch (error) {
+    toast.add({ 
+      title: 'Error', 
+      description: 'Failed to subscribe. Please try again.',
+      icon: 'i-heroicons-x-circle',
+      color: 'red' 
+    })
+  } finally {
+    isSubmitting.value = false
   }
 }
 </script>
@@ -67,6 +92,7 @@ const handleSubscribe = () => {
                   variant="ghost"
                   color="gray"
                   icon="i-heroicons-arrow-right-20-solid"
+                  :loading="isSubmitting"
                   class="hover:text-primary-500 p-0 transition-colors duration-300"
                   :ui="{ rounded: 'rounded-none' }" />
               </template>
