@@ -165,13 +165,25 @@ const deletePost = async (id) => {
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                   <div class="space-y-2 w-full">
                     <label class="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 ml-1">02. Taxonomy (Category): </label>
-                    <USelect v-model="editingPost.category" :options="categoryOptions" size="lg" icon="i-heroicons-tag" class="w-full" />
+                    <div class="flex flex-wrap gap-2 pt-2">
+                      <button
+                        v-for="cat in categoryOptions"
+                        :key="cat"
+                        type="button"
+                        @click="editingPost.category = cat"
+                        class="px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-widest transition-all"
+                        :class="editingPost.category === cat 
+                          ? 'bg-primary-500 text-white shadow-lg' 
+                          : 'bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-zinc-700'">
+                        {{ cat }}
+                      </button>
+                    </div>
                   </div>
-                  <div class="space-y-2 w-full">
+                  <div class="space-y-2 w-full relative z-40">
                     <label class="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 ml-1">03. Read Duration: </label>
                     <UInput v-model="editingPost.readTime" placeholder="e.g. 5 MIN" size="lg" icon="i-heroicons-clock" class="w-full" />
                   </div>
-                  <div class="space-y-2 w-full">
+                  <div class="space-y-2 w-full relative z-30">
                     <label class="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-400 ml-1">04. Cover Image: </label>
                     <div class="flex gap-2">
                       <UInput v-model="editingPost.image" placeholder="HTTPS://..." size="lg" icon="i-heroicons-photo" class="flex-1" />
