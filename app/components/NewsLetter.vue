@@ -28,7 +28,7 @@ const handleSubscribe = () => {
 <template>
   <section 
     ref="newsletterRef"
-    class="py-24 border-t border-zinc-100 dark:border-zinc-800/50 mt-16 opacity-0 bg-zinc-100 transition-colors duration-700"
+    class="py-24 border-t border-zinc-100 dark:border-zinc-800/50 mt-16 dark:bg-zinc-900 opacity-0 bg-zinc-100 transition-colors duration-700"
     :class="{ 'animate-vantage-fade': isVisible }">
     <div class="max-w-3xl mx-auto px-6">
       <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-12">
@@ -57,7 +57,7 @@ const handleSubscribe = () => {
               size="md"
               variant="none"
               :ui="{
-                base: 'w-full bg-transparent border-b border-zinc-200 dark:border-zinc-800 py-4 px-0 text-sm font-bold tracking-widest text-zinc-900 dark:text-zinc-100 focus:border-primary-500 transition-all duration-300 rounded-none',
+                base: 'w-full bg-transparent border-b border-zinc-200 dark:border-zinc-400 py-4 px-0 text-sm font-bold tracking-widest text-zinc-900 dark:text-zinc-100 focus:border-primary-500 transition-all duration-300 rounded-none',
                 placeholder: 'placeholder-zinc-300 dark:placeholder-zinc-700'
               }"
               required>
