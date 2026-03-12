@@ -109,27 +109,29 @@ const deletePost = async (id) => {
 
     <!-- Table Section - ORIGINAL -->
     <div class="bg-white dark:bg-zinc-950 border border-gray-200 dark:border-zinc-800 rounded-2xl overflow-hidden shadow-sm">
-      <table class="w-full text-left border-collapse">
-        <thead class="bg-gray-50 dark:bg-zinc-900/50 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 border-b border-gray-100 dark:border-zinc-800">
-          <tr>
-            <th class="p-6">Article Information</th>
-            <th class="p-6">Taxonomy</th>
-            <th class="p-6 text-right">Actions</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-100 dark:divide-zinc-900">
-          <tr v-for="post in allPosts" :key="post.id" class="group transition-colors hover:bg-gray-50/50 dark:hover:bg-zinc-900/50">
-            <td class="p-6 font-bold text-sm uppercase tracking-tight text-zinc-800 dark:text-zinc-200">{{ post.title }}</td>
-            <td class="p-6">
-              <UBadge variant="subtle" color="primary" class="font-black uppercase text-[9px] tracking-widest">{{ post.category }}</UBadge>
-            </td>
-            <td class="p-6 text-right flex justify-end gap-2">
-              <UButton icon="i-heroicons-pencil-square" variant="ghost" color="gray" @click="openEditor(post)" />
-              <UButton icon="i-heroicons-trash" variant="ghost" color="red" @click="deletePost(post.id)" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[640px]">
+          <thead class="bg-gray-50 dark:bg-zinc-900/50 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 border-b border-gray-100 dark:border-zinc-800">
+            <tr>
+              <th class="p-6">Article Information</th>
+              <th class="p-6">Taxonomy</th>
+              <th class="p-6 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 dark:divide-zinc-900">
+            <tr v-for="post in allPosts" :key="post.id" class="group transition-colors hover:bg-gray-50/50 dark:hover:bg-zinc-900/50">
+              <td class="p-6 font-bold text-sm uppercase tracking-tight text-zinc-800 dark:text-zinc-200">{{ post.title }}</td>
+              <td class="p-6">
+                <UBadge variant="subtle" color="primary" class="font-black uppercase text-[9px] tracking-widest">{{ post.category }}</UBadge>
+              </td>
+              <td class="p-6 text-right flex justify-end gap-2">
+                <UButton icon="i-heroicons-pencil-square" variant="ghost" color="gray" @click="openEditor(post)" />
+                <UButton icon="i-heroicons-trash" variant="ghost" color="red" @click="deletePost(post.id)" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- IN-PAGE EDITOR CARD - STYLE RESTORED -->
