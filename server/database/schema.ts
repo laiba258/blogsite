@@ -22,6 +22,8 @@ export const users = sqliteTable("users", {
   email: text("email").notNull().unique(),
   password: text("password").notNull(),
   role: text("role").default("user"),
+  resetToken: text("reset_token"),
+  resetTokenExpiry: text("reset_token_expiry"),
 });
 
 export const staticPages = sqliteTable("static_pages", {

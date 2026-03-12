@@ -51,6 +51,12 @@ color="gray"
 variant="outline"
 icon="i-heroicons-lock-closed" />
       
+      <div class="text-right">
+        <NuxtLink to="/forgot-password" class="text-xs text-primary-500 hover:text-primary-600 font-semibold">
+          Forgot Password?
+        </NuxtLink>
+      </div>
+      
       <UButton
 type="submit"
 block
