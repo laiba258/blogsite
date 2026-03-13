@@ -1,5 +1,8 @@
 <script setup>
-definePageMeta({ layout: 'admin' })
+definePageMeta({ 
+  layout: 'admin',
+  middleware: 'admin'
+})
 
 const { data: globalSeo, refresh } = await useFetch('/api/admin/seo-config')
 

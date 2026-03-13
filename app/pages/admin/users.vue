@@ -1,5 +1,8 @@
 <script setup>
-definePageMeta({ layout: 'admin' })
+definePageMeta({ 
+  layout: 'admin',
+  middleware: 'admin'
+})
 
 const { data: usersList, refresh } = await useFetch('/api/admin/users')
 const toast = useToast()

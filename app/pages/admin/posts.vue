@@ -1,5 +1,8 @@
 <script setup>
-definePageMeta({ layout: 'admin' })
+definePageMeta({ 
+  layout: 'admin',
+  middleware: 'admin'
+})
 
 const { data: allPosts, refresh } = await useFetch('/api/posts')
 const isSaving = ref(false)

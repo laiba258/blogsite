@@ -1,5 +1,8 @@
 <script setup>
-definePageMeta({ layout: 'admin' })
+definePageMeta({ 
+  layout: 'admin',
+  middleware: 'admin'
+})
 
 const pages = [
   { id: 'about', title: 'About Us', icon: 'i-heroicons-information-circle' },
