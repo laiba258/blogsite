@@ -2,16 +2,31 @@
 definePageMeta({ layout: 'admin' })
 
 const { data: usersList, refresh } = await useFetch('/api/admin/users')
+const toast = useToast()
 
 async function updateRole(userId, currentRole) {
   const newRole = currentRole === 'admin' ? 'user' : 'admin'
   
   if (confirm(`Are you sure to change user to ${newRole}?`)) {
-    await $fetch('/api/admin/users/role', {
-      method: 'POST',
-      body: { userId, newRole }
-    })
-    refresh()
+    try {
+      await $fetch('/api/admin/users/roles', {
+        method: 'POST',
+        body: { userId, newRole }
+      })
+      toast.add({
+        title: 'Success!',
+        description: 'User role updated successfully',
+        icon: 'i-heroicons-check-circle',
+        color: 'green'
+      })
+      refresh()
+    } catch (error) {
+      toast.add({
+        title: 'Error',
+        description: 'Failed to update user role',
+        color: 'red'
+      })
+    }
   }
 }
 </script>
